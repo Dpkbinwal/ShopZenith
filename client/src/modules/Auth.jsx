@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function Auth() {
   const [email, setEmail] = useState('')
@@ -29,12 +31,17 @@ export default function Auth() {
       if (token) {
         window.localStorage.setItem('token', token)
         window.localStorage.setItem('user', JSON.stringify(user))
+       setTimeout(()=>{
         navigate('/')
         window.location.reload()
+       },2000)
+       toast.success('Login Successful!');
+
       }
     } catch (error) {
       console.log(error)
-      alert('Something went wrong')
+      // alert('Something went wrong')
+      toast.error('Something went wrong!');
     }
   }
 
@@ -50,11 +57,7 @@ export default function Auth() {
     <>
       <div className="flex min-h-full h-[70vh] flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
+          
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>

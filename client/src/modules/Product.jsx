@@ -8,6 +8,7 @@ import Accordian from '../components/Accordian'
 import { useNavigate, useParams } from 'react-router-dom'
 import { fecthRequest } from '../utils'
 import useFetch from '../hooks/useFetch'
+import toast from 'react-hot-toast'
 
 const product = {
   name: 'Zip Tote Basket',
@@ -68,9 +69,27 @@ export default function Product() {
     const ifExist = cart.find((item) => item._id === cartProduct._id)
     if (!ifExist) {
       localStorage.setItem('cart', JSON.stringify([...cart, cartProduct]))
-      alert('Product added to cart')
+      // alert('Product added to cart')
+      toast.success("Product added to cart",{
+        duration: 3000,
+        position: 'top-center',
+        // Add other options here
+        style: {
+          background: '#333',
+          color: '#fff',
+        }
+      });
     } else {
-      alert('Product already exist in cart')
+      // alert('Product already exist in cart')
+      toast.error("Product already exist in cart",{
+        duration: 3000,
+        position: 'top-center',
+        // Add other options here
+        style: {
+          background: '#333',
+          color: '#fff',
+        }
+      });
     }
     // navigate('/cart')
   }
