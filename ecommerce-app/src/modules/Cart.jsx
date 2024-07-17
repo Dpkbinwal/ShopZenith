@@ -1,5 +1,5 @@
 import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import userStorage from '../hooks/userStorage'
 
@@ -43,10 +43,22 @@ export default function Cart() {
   const navigate = useNavigate()
   const [state, setStorage] = userStorage('cart')
 
+  const [items, setItems] = useState([]);
+
+useEffect(() => {
+  const items = JSON.parse(localStorage.getItem('user'));
+  if (items) {
+   setItems(items);
+  }
+}, []);
+
+  console.log(items);
+
   const handleSubmit = (event) => {
     event.preventDefault()
     // Handle form submission...
-    navigate('/checkout')
+
+    {items.id ?  navigate('/checkout') : navigate('/login')}
   }
 
 
@@ -197,14 +209,13 @@ export default function Cart() {
             </dl>
 
             <div className="mt-6">
-              {/* <button
+              <button
                 type="submit"
                 className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 Checkout
-              </button> */}
-              <button  className="w-full mt-30 rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"  style={{marginTop: "20px"}}> Order Now</button>
-              
+              </button>
+             
             </div>
           </section>
           ) : null}

@@ -9,6 +9,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { fecthRequest } from '../utils'
 import useFetch from '../hooks/useFetch'
 
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 const product = {
   name: 'Zip Tote Basket',
   price: '$140',
@@ -57,6 +60,11 @@ export default function Product() {
   const [selectedColor, setSelectedColor] = useState(null)
   const { products: product, loading, error } = useFetch(`products/${id}`, 'GET', 'product')
 
+
+  // const notify = () => toast("Product added to Cart!");
+  // const alreadynotify = () => toast("Product aready exist!");
+  
+
   const handleSubmit = (event) => {
     event.preventDefault()
     // Handle form submission...
@@ -68,9 +76,9 @@ export default function Product() {
     const ifExist = cart.find((item) => item._id === cartProduct._id)
     if (!ifExist) {
       localStorage.setItem('cart', JSON.stringify([...cart, cartProduct]))
-      alert('Product added to cart')
+      toast("Product added to Cart!");
     } else {
-      alert('Product already exist in cart')
+      toast("Product aready exist!");
     }
     // navigate('/cart')
   }
@@ -212,10 +220,12 @@ export default function Product() {
 
                 <div className="mt-10 flex">
                   <button
-                    type="submit"
+                  //  onClick={notify}
                     className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                   >
-                    Add to bag
+                    Add To Bag
+                    
+                      <ToastContainer/>
                   </button>
 
                   <button

@@ -1,19 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 const navigation = [
-  {name:'Home',href:'/'},
-  {name: 'About Us',href:'/about'}, 
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
   { name: 'Products', href: '/products' },
-  { name: 'Features', href: '/features' },
   { name: 'Contact', href: '/contact' },
-  
 ]
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token')
+    setIsAuthenticated(!!token) // Set isAuthenticated to true if token exists
+  }, [])
+
+  const handleLogout = () => {
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('user')
+    setIsAuthenticated(false)
+    navigate('/login')
+  }
 
   return (
     <header className="bg-white shadow">
@@ -37,18 +49,24 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <NavLink key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+            <NavLink key={item.name} to={item.href} className=" text-l font-semibold leading-6 text-gray-900">
               {item.name}
             </NavLink>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
           <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
             <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
           </Link>
-          <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 ml-6">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          {isAuthenticated ? (
+            <button onClick={handleLogout} className="text-sm font-semibold leading-6 text-gray-900 ml-6">
+              Log out
+            </button>
+          ) : (
+            <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900 ml-6">
+              Log in <span aria-hidden="true">&rarr;</span>
+            </Link>
+          )}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -57,7 +75,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <span className="font-bold tracking-tight text-2xl">ShopZenith</span>
+              <span className="font-bold tracking-tight text-4xl">ShopZenith</span>
             </a>
             <button
               type="button"
@@ -74,20 +92,33 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    to={item.href}
+                    className="mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" 
+                    onClick={() => setMobileMenuOpen(false)} // Close menu on link click
                   >
                     {item.name}
                   </Link>
                 ))}
               </div>
-              <div className="py-6">
-                <Link
-                  to={'/login'}
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
+              <div className="py-6 flex items-center">
+                <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
+                  <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
                 </Link>
+                {isAuthenticated ? (
+                  <button
+                    onClick={handleLogout}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Log out
+                  </button>
+                ) : (
+                  <Link
+                    to={'/login'}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Log in
+                  </Link>
+                )}
               </div>
             </div>
           </div>

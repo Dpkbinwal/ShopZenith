@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Auth() {
   const [email, setEmail] = useState('')
@@ -20,28 +21,35 @@ export default function Auth() {
         body: JSON.stringify({ email, password })
       })
 
-      if(!response.ok) throw new Error('Something went wrong')
-
+      if (!response.ok) {
+        const errData = await response.json();
+        toast(errData.msg);
+        throw new Error(errData.msg || 'Invalid Credentials');
+      }
       const data = await response.json()
       console.log(data)
       const { token, user } = data
+      toast("login successful")
 
       if (token) {
         window.localStorage.setItem('token', token)
         window.localStorage.setItem('user', JSON.stringify(user))
-        navigate('/admin/dashboard')
+        setTimeout(()=>{
+          navigate('/')
+          window.location.reload();
+        },2000)
       }
     } catch (error) {
       console.log(error)
-      alert('Something went wrong')
+      // alert('Something went wrong')
     }
   }
 
   useEffect(() => {
     const token = window.localStorage.getItem('token')
     if (token) {
-      // navigate('/admin/dashboard')
-      window.location.href = '/admin/dashboard'
+      
+      window.location.href = '/'
     }
   }, [])
 
@@ -86,9 +94,11 @@ export default function Auth() {
             <div>
               <Button type="submit">
                 Sign in
+                <ToastContainer/>
               </Button>
             </div>
           </form>
+          <div className="flex items-center font-bold m-3 justify-evenly">not have account  ? <Link to="/register"> Register</Link></div>
         </div>
       </div>
     </>

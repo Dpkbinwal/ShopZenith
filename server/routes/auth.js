@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   res.send('Auth route');
 });
 
+
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -50,6 +51,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
+  
+
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -65,11 +68,11 @@ router.post('/login', async (req, res) => {
 
     // Validate password
 
-    // const isMatch = await bcrypt.compare(password, isExist.password);
+    const isMatch = await bcrypt.compare(password, isExist.password);
     
-    // if (!isMatch) {
-    //   return res.status(400).json({ msg: 'Invalid credentials' });
-    // }
+    if (!isMatch) {
+      return res.status(400).json({ msg: 'Invalid credentials' });
+    }
     if (!password) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }

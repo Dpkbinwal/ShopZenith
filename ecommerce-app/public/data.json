@@ -1,0 +1,132 @@
+[
+    {
+        "name": "printed Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images":"https://tse4.mm.bing.net/th?id=OIP.xsUyZhwcu5dNxZqpPfCiFwHaIf&pid=Api&P=0&h=220",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Anime Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://cdn1.bambinifashion.com/img/p/1/8/3/9/8/2/183982--product.jpg",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Marvel Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://tse1.mm.bing.net/th?id=OIP.mwzIJAyXv3AVXFL7mGZ9IQHaJT&pid=Api&P=0&h=220",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Beach Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://tse4.mm.bing.net/th?id=OIP.bo6bTutIGEWINIPZ9dAASQHaIZ&pid=Api&P=0&h=220",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "DC Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://tse4.mm.bing.net/th?id=OIP.an32vnClA-tirKBwoUYMDwAAAA&pid=Api&P=0&h=220",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Hero Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "image": "https://www.bhphotovideo.com/images/images2500x2500/beats_by_dr_dre_900_00108_01_studio_wireless_headphones_white_1016366.jpg",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Naruto Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://pngimg.com/uploads/tshirt/tshirt_PNG5437.png",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "One Piece Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://4.bp.blogspot.com/_Vgu7TqUAns8/TOz2FLjdENI/AAAAAAAAABo/Cjs0K9jghjs/s1600/uuuu.jpg",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Low Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://4.bp.blogspot.com/_Vgu7TqUAns8/TOz2FLjdENI/AAAAAAAAABo/Cjs0K9jghjs/s1600/uuuu.jpg",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "High Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "image": "https://www.bhphotovideo.com/images/images2500x2500/beats_by_dr_dre_900_00108_01_studio_wireless_headphones_white_1016366.jpg",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Collar Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://tse2.mm.bing.net/th?id=OIP.n1nmZKlzG9ULfroDlB-yowHaHa&pid=Api&P=0&h=220",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Polo Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://tse4.mm.bing.net/th?id=OIP.P7mO2FkAz6lC1XBw7iTBdwHaHa&pid=Api&P=0&h=220",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    },
+    {
+        "name": "Tshirt",
+        "price": "199",
+        "description": "Tshirt is very popular",
+        "rating": "4",
+        "images": "https://i.pinimg.com/736x/f3/57/6a/f3576adf0e076f17e7977336d791940b.jpg",
+        "category": "tees",
+        "color": "black",
+        "stock": "100"
+    }
+]

@@ -12,6 +12,9 @@ import Auth from './modules/Auth'
 import Dashboard from './modules/Dashboard'
 import AppLayout from './components/AppLayout'
 import AddProduct from './modules/AddProduct'
+import Register from './modules/Register'
+import About from './modules/About'
+import Contact from './modules/Contact'
 
 const ROUTES = [
   {
@@ -43,31 +46,24 @@ const ROUTES = [
     path: '/login',
     key: 'LOGIN',
     element: <Auth />,
-  }
+  },
+  {
+    path: '/register',
+    key: 'REGISTER',
+    element: <Register/>,
+  },
+  {
+    path: '/about',
+    key: 'ABOUT',
+    element: <About/>,
+  },
+  {
+    path: '/contact',
+    key: 'CONTACT',
+    element: <Contact/>,
+  },
 ]
 
-const APP_ROUTES = [
-  {
-    path: 'dashboard',
-    key: 'DASHBOARD',
-    element: <Dashboard />,
-  },
-  {
-    path: 'products',
-    key: 'PRODUCTS',
-    element: <Products banner={false} />,
-  },
-  {
-    path: 'products/:id',
-    key: 'PRODUCT',
-    element: <Product />,
-  },
-  {
-    path: 'add-product',
-    key: 'ADD_PRODUCT',
-    element: <AddProduct />,
-  },
-]
 
 const ProtectedRoute = ({ isLoggedIn }) => {
   return isLoggedIn ? <Outlet /> : (<Navigate to={'/login'} />)
@@ -100,20 +96,6 @@ function App() {
               <ProtectedRoute isLoggedIn={token} />
             </>
           }>
-          {
-            
-
-            // APP_ROUTES.map(({ path, key, element }) => (
-            //   <Route path={path} key={key} element={
-            //     <>
-            //       <AppLayout>
-            //         {element}
-            //       </AppLayout>
-            //     </>
-            //   } 
-            //   />
-            // ))
-          }
         </Route>
         
         <Route path="*" element={<NotFound />} />
