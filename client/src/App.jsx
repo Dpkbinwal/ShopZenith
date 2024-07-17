@@ -6,6 +6,9 @@ import Main from './modules/Main'
 import NotFound from './components/NotFound'
 import Products from './modules/Products'
 import Product from './modules/Product'
+import About from './modules/About'
+import Register from './modules/Register'
+import Contact from './modules/Contact'
 import Cart from './modules/Cart'
 import Checkout from './modules/Checkout'
 import Auth from './modules/Auth'
@@ -43,31 +46,25 @@ const ROUTES = [
     path: '/login',
     key: 'LOGIN',
     element: <Auth />,
+  },
+  {
+    path: '/about',
+    key: 'ABOUT',
+    element: <About />,
+  },
+  {
+    path: '/register',
+    key: 'REGISTER',
+    element: <Register/>,
+  }
+  ,
+  {
+    path: '/contact',
+    key: 'CONTACT',
+    element: <Contact />,
   }
 ]
 
-const APP_ROUTES = [
-  {
-    path: 'dashboard',
-    key: 'DASHBOARD',
-    element: <Dashboard />,
-  },
-  {
-    path: 'products',
-    key: 'PRODUCTS',
-    element: <Products banner={false} />,
-  },
-  {
-    path: 'products/:id',
-    key: 'PRODUCT',
-    element: <Product />,
-  },
-  {
-    path: 'add-product',
-    key: 'ADD_PRODUCT',
-    element: <AddProduct />,
-  },
-]
 
 const ProtectedRoute = ({ isLoggedIn }) => {
   return isLoggedIn ? <Outlet /> : (<Navigate to={'/login'} />)

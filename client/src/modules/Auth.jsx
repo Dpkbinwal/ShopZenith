@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Auth() {
   const [email, setEmail] = useState('')
@@ -29,7 +29,8 @@ export default function Auth() {
       if (token) {
         window.localStorage.setItem('token', token)
         window.localStorage.setItem('user', JSON.stringify(user))
-        navigate('/admin/dashboard')
+        navigate('/')
+        window.location.reload()
       }
     } catch (error) {
       console.log(error)
@@ -87,6 +88,9 @@ export default function Auth() {
               <Button type="submit">
                 Sign in
               </Button>
+            </div>
+            <div>
+              <span>Not have account ?</span><Link to="/register">Register</Link>
             </div>
           </form>
         </div>
